@@ -13,4 +13,19 @@ export class PostService {
     });
     return post;
   }
+
+  async findAll() {
+    const posts = this.postRepository.findAll({ include: { all: true } });
+    return posts;
+  }
+
+  async findOne(id: number) {
+    const post = await this.postRepository.findOne({ where: { id } });
+    return post;
+  }
+
+  async remove(id: number) {
+    const post = await this.postRepository.findOne({ where: { id } });
+    await post.destroy();
+  }
 }

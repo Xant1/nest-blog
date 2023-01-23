@@ -26,5 +26,5 @@ export class Post extends Model<Post> {
     type: DataType.TEXT,
     allowNull: false,
   })
-  markdown: string;
+  content: string;
 }

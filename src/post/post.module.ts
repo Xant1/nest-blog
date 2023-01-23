@@ -5,8 +5,8 @@ import { Post } from './post.model';
 import { SequelizeModule } from '@nestjs/sequelize';
 
 @Module({
+  imports: [SequelizeModule.forFeature([Post])],
   controllers: [PostController],
   providers: [PostService],
-  imports: [SequelizeModule.forFeature([Post])],
 })
 export class PostModule {}
