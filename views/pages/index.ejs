@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-   <%- include('../partials/header.ejs') %>
+    <%- include('../partials/header.ejs') %>
     <h1 style="text-align: center">Posts</h1>
     <div style="text-align: center; margin-top: 15px">
       <button class="create-button">
@@ -37,20 +37,26 @@
       </p>
     </div>
     <main>
-      <!-- {{#each posts}}
-                <div class="item">
-                        <img src="{{this.image}}" alt="image">
-                        <h1>{{this.title}}</h1><br>
-                        <p>{{this.description}}</p><br>                                                       
-                    <div class="btn-group" style="width:100%">
-                        <button class="read-btn" style="width:33.3%"><a class="read-more" href="/post/{{this.slug}}">Read</a></button>
-                        <button class="edit-btn" style="width:33.3%"><a class="edit-link" href="/edit/{{this.id}}">Edit</a></button>                                    
-                    <form action="delete/{{this.id}}" method="POST">
-                        <button class="delete-btn" style="width:33.3%" type="submit">Delete</button>
-                    </form> 
-                    </div>                    
-                </div>                  
-        {{/each}} -->
+      <div class="item">
+        <!-- <img src="{{this.image}}" alt="image"> -->
+        <h1><%= article.title %></h1>
+        <br />
+        <p><%= article.description %></p>
+        <br />
+        <!-- <div class="btn-group" style="width: 100%">
+          <button class="read-btn" style="width: 33.3%">
+            <a class="read-more" href="/post/{{ this.slug }}">Read</a>
+          </button>
+          <button class="edit-btn" style="width: 33.3%">
+            <a class="edit-link" href="/edit/{{ this.id }}">Edit</a>
+          </button>
+          <form action="delete/{{ this.id }}" method="POST">
+            <button class="delete-btn" style="width: 33.3%" type="submit">
+              Delete
+            </button>
+          </form>
+        </div> -->
+      </div>
     </main>
     <div class="column side">
       <h2>Side</h2>

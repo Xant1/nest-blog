@@ -7,7 +7,7 @@ import { PORT } from './config';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.useStaticAssets(join(__dirname, '..', 'public'));
-  app.setBaseViewsDir(join(__dirname, '..', 'views'));
+  app.setBaseViewsDir(join(__dirname, '..', 'views/pages'));
   app.setViewEngine('ejs');
 
   await app.listen(PORT, () => console.log(`Server started on port = ${PORT}`));
