@@ -1,16 +1,20 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Render } from '@nestjs/common';
 import { CreatePostDto } from './dto/create-post.dto';
 import { PostService } from './post.service';
-@Controller('post')
+
+
+@Controller()
 export class PostController {
   constructor(private postService: PostService) {}
 
-  @Post()
+  
+
+  @Post('/create')
   createPost(@Body() dto: CreatePostDto) {
     return this.postService.create(dto);
   }
 
-  @Get()
+  @Get('/')  
   getAllPosts() {
     return this.postService.findAll();
   }

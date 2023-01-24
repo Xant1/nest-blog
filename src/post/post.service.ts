@@ -20,12 +20,12 @@ export class PostService {
   }
 
   async findOne(id: number) {
-    const post = await this.postRepository.findOne({ where: { id } });
+    const post = await this.postRepository.findOne({ where: { id: id } });
     return post;
   }
 
   async remove(id: number) {
-    const post = await this.postRepository.findOne({ where: { id } });
+    const post = await this.postRepository.findOne({ where: { id: id } });
     await post.destroy();
   }
 }
