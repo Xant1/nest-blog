@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Article</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="create-h1">New Article</h1>
+    <div class="create-container">
+        <form action="/create" method="POST">            
+            <div class="row">
+                <div class="create-col1">
+                    <label>Title</label>
+                </div>
+                <div class="create-col2">
+                    <input type="text" required name="title"/>
+                </div>                
+            </div>
+            <div class="row">
+                <div class="create-col1">
+                    <label>Description</label>
+                </div>
+                <div class="create-col2">
+                    <textarea  required name="description"  style="height:100px"  ></textarea>
+                </div>                
+            </div>  
+            <div class="row">
+                <div class="create-col1">
+                    <label>Content</label>
+                </div>
+                <div class="create-col2">
+                    <textarea id="main-content" required name="content"  style="height:350px"  ></textarea>
+                </div>                
+            </div>
+            <br>
+            <div class="row">
+                <input type="submit"></input>
+                <button class="create-button"><a class="create-cansel" href="/">Cansel</a> </button>                       
+            </div>                                                            
+        </form>
+    </div>
+</body>
+<html>
