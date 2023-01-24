@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { Post } from './post.model';
+import { Article } from './article.model';
 import { InjectModel } from '@nestjs/sequelize';
-import { CreatePostDto } from './dto/create-post.dto';
+import { CreatePostDto } from './dto/create-article.dto';
 
 @Injectable()
-export class PostService {
-  constructor(@InjectModel(Post) private postRepository: typeof Post) {}
+export class ArticleService {
+  constructor(@InjectModel(Article) private postRepository: typeof Article) {}
 
   async create(dto: CreatePostDto) {
     const post = await this.postRepository.create({
@@ -21,6 +21,14 @@ export class PostService {
 
   async findOne(id: number) {
     const post = await this.postRepository.findOne({ where: { id: id } });
+    return post;
+  }
+
+  async update(id: number, dto: CreatePostDto) {
+    const post = await this.postRepository.update(
+      { ...dto },
+      { where: { id: id } },
+    );
     return post;
   }
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editing</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1 class="post-h1">Editing</h1>
+        <div class="create-container">
+            <form action="/edit/article/:id" method="POST">
+                <input required class="hidden-id" type="hidden" name="id" value="<%= article.id %>" />
+                <div class="row">
+                    <div class="create-col1">
+                        <label>Title</label>
+                    </div>
+                    <div class="create-col2">
+                        <input type="text" required name="title" value="<%= article.title %>" />
+                    </div>                
+                </div>
+                <div class="row">
+                    <div class="create-col1">
+                        <label>Description</label>
+                    </div>
+                    <div class="create-col2">
+                        <textarea  required name="description"  style="height:100px"><%= article.description %></textarea>
+                    </div>                
+                </div>  
+                <div class="row">
+                    <div class="create-col1">
+                        <label>Content</label>
+                    </div>
+                    <div class="create-col2">
+                        <textarea id="main-content" required name="content"  style="height:350px" ><%= article.content %></textarea>
+                    </div>                
+                </div>
+                <br>
+                <div class="row">
+                    <input type="submit"></input>
+                    <button class="create-button"><a class="create-cansel" href="/">Cansel</a> </button>                       
+                </div>                                                            
+            </form>
+        </div>
+</body>
+<html>

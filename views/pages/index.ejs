@@ -37,26 +37,28 @@
       </p>
     </div>
     <main>
+      <% articles.forEach(article => { %>
       <div class="item">
         <!-- <img src="{{this.image}}" alt="image"> -->
         <h1><%= article.title %></h1>
         <br />
         <p><%= article.description %></p>
         <br />
-        <!-- <div class="btn-group" style="width: 100%">
+        <div class="btn-group" style="width: 100%">
           <button class="read-btn" style="width: 33.3%">
-            <a class="read-more" href="/post/{{ this.slug }}">Read</a>
+            <a class="read-more" href="/article/<%= article.id %>">Read</a>
           </button>
           <button class="edit-btn" style="width: 33.3%">
-            <a class="edit-link" href="/edit/{{ this.id }}">Edit</a>
+            <a class="edit-link" href="/edit/article/<%= article.id %>">Edit</a>
           </button>
-          <form action="delete/{{ this.id }}" method="POST">
+          <form action="/article/<%= article.id %>" method="POST">
             <button class="delete-btn" style="width: 33.3%" type="submit">
               Delete
             </button>
           </form>
-        </div> -->
+        </div>
       </div>
+      <% }) %>
     </main>
     <div class="column side">
       <h2>Side</h2>

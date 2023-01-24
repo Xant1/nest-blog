@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule } from '@nestjs/config';
-import { PostModule } from './post/post.module';
-import {Post} from './post/post.model'
+import { ArticleModule } from './post/article.module';
+import { Article } from './post/article.model';
 import { DB_HOST, DB_NAME, DB_USER, DB_PORT, DB_PASSWORD } from './config';
 
 @Module({
@@ -19,10 +19,10 @@ import { DB_HOST, DB_NAME, DB_USER, DB_PORT, DB_PASSWORD } from './config';
       username: DB_USER,
       password: DB_PASSWORD,
       database: DB_NAME,
-      models: [Post],
-      autoLoadModels: true
-  }),
-    PostModule,
+      models: [Article],
+      autoLoadModels: true,
+    }),
+    ArticleModule,
   ],
 })
 export class AppModule {}
