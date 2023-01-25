@@ -1,7 +1,14 @@
 import { Model, DataType, Column, Table } from 'sequelize-typescript';
 
+interface articleCreationAttrs {
+  title: string;
+  description: string;
+  content: string;
+  image: string;
+}
+
 @Table({ tableName: 'articles' })
-export class Article extends Model<Article> {
+export class Article extends Model<Article, articleCreationAttrs> {
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -27,4 +34,9 @@ export class Article extends Model<Article> {
     allowNull: false,
   })
   content: string;
+
+  @Column({
+    type: DataType.STRING,
+  })
+  image: string;
 }

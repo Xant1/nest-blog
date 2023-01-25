@@ -39,7 +39,7 @@
     <main>
       <% articles.forEach(article => { %>
       <div class="item">
-        <!-- <img src="{{this.image}}" alt="image"> -->
+        <img src="<%= article.image %>" alt="image">
         <h1><%= article.title %></h1>
         <br />
         <p><%= article.description %></p>

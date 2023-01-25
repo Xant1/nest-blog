@@ -2,14 +2,20 @@ import { Injectable } from '@nestjs/common';
 import { Article } from './article.model';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreatePostDto } from './dto/create-article.dto';
+import { FilesService } from '../files/files.service';
 
 @Injectable()
 export class ArticleService {
-  constructor(@InjectModel(Article) private postRepository: typeof Article) {}
+  constructor(
+    @InjectModel(Article) private postRepository: typeof Article,
+    private fileService: FilesService,
+  ) {}
 
-  async create(dto: CreatePostDto) {
+  async create(dto: CreatePostDto, image: any) {
+    const fileName = await this.fileService.createFile(image);
     const post = await this.postRepository.create({
       ...dto,
+      image: fileName,
     });
     return post;
   }
@@ -25,10 +31,7 @@ export class ArticleService {
   }
 
   async update(id: number, dto: CreatePostDto) {
-    const post = await this.postRepository.update(
-      { ...dto },
-      { where: { id: id } },
-    );
+    const post = this.postRepository.update(dto, { where: { id: id } });
     return post;
   }
 

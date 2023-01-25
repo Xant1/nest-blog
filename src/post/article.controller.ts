@@ -4,13 +4,15 @@ import {
   Get,
   Param,
   Post,
+  UploadedFile,
+  UseInterceptors,
   Redirect,
   Res,
 } from '@nestjs/common';
 import { CreatePostDto } from './dto/create-article.dto';
 import { ArticleService } from './article.service';
 import { Response } from 'express';
-
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller()
 export class ArticleController {
@@ -23,8 +25,9 @@ export class ArticleController {
 
   @Post('/create')
   @Redirect('/')
-  createPost(@Body() dto: CreatePostDto) {
-    return this.postService.create(dto);
+  @UseInterceptors(FileInterceptor('image'))
+  createPost(@Body() dto: CreatePostDto, @UploadedFile() image) {
+    return this.postService.create(dto, image);
   }
 
   @Get('/')
@@ -50,7 +53,7 @@ export class ArticleController {
 
   @Post('/edit/article/:id')
   @Redirect('/')
-  updatePost(@Param('id') id: number, @Body() dto: CreatePostDto) {
+  update(@Body() dto: CreatePostDto, @Param('id') id: number) {
     return this.postService.update(id, dto);
   }
 

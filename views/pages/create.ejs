@@ -8,7 +8,9 @@
 <body>
     <h1 class="create-h1">New Article</h1>
     <div class="create-container">
-        <form action="/create" method="POST">            
+        <form action="/create" method="POST" enctype="multipart/form-data">
+            <label>file</label>
+            <input required type="file" name="image"><br>            
             <div class="row">
                 <div class="create-col1">
                     <label>Title</label>

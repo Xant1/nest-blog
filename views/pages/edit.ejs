@@ -8,8 +8,10 @@
 <body>
     <h1 class="post-h1">Editing</h1>
         <div class="create-container">
-            <form action="/edit/article/:id" method="POST">
-                <input required class="hidden-id" type="hidden" name="id" value="<%= article.id %>" />
+            <form action="/edit/article/:id" method="POST" enctype="multipart/form-data">
+                <input  class="hidden-id" type="hidden" name="id" value="<%= article.id %>" />
+                <label>file</label>
+                <input required type="file" name="image"><br>        
                 <div class="row">
                     <div class="create-col1">
                         <label>Title</label>
