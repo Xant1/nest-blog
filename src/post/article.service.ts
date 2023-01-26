@@ -31,7 +31,7 @@ export class ArticleService {
   }
 
   async update(id: number, dto: CreatePostDto) {
-    const post = this.postRepository.update(dto, { where: { id: id } });
+    const post = this.postRepository.update(dto, { where: { id } });
     return post;
   }
 

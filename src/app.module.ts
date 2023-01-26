@@ -6,6 +6,9 @@ import { Article } from './post/article.model';
 import { DB_HOST, DB_NAME, DB_USER, DB_PORT, DB_PASSWORD } from './config';
 import { FilesModule } from './files/files.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { UserModule } from './user/user.module';
+import { RoleModule } from './role/role.module';
+import { AuthModule } from './auth/auth.module';
 import * as path from 'path';
 
 @Module({
@@ -30,6 +33,10 @@ import * as path from 'path';
     }),
     ArticleModule,
     FilesModule,
+    UserModule,
+    RoleModule,
+    AuthModule,
   ],
 })
+
 export class AppModule {}
