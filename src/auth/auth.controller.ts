@@ -18,12 +18,13 @@ export class AuthController {
   }
 
   @Post('/registration')
+  // @Redirect('/')
   registration(@Body() userDto: createUserDto) {
     return this.authService.registration(userDto);
   }
 
   @Post('/login')
-  @Redirect('/')
+  // @Redirect('/')
   login(@Body() userDto: createUserDto) {
     return this.authService.login(userDto);
   }
