@@ -9,3 +9,4 @@ export class createUserDto {
   })
   readonly password: string;
 }
+
