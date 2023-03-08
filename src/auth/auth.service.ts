@@ -19,6 +19,7 @@ export class AuthService {
 
   async login(userDto: createUserDto) {
     const user = await this.validateUser(userDto);
+
     return this.generateToken(user);
   }
 
@@ -27,7 +28,7 @@ export class AuthService {
     if (candidate) {
       throw new HttpException('A user already exist', HttpStatus.BAD_REQUEST);
     }
-    const hashPassword = await bcrypt.hash(userDto.password, 9);
+    const hashPassword = await bcrypt.hash(userDto.password, 5);
     const user = await this.userService.createUser({
       ...userDto,
       password: hashPassword,
@@ -37,9 +38,12 @@ export class AuthService {
 
   private async generateToken(user: User) {
     const payload = { email: user.email, id: user.id, roles: user.roles };
+    
     return {
       token: this.jwtService.sign(payload),
+      
     };
+    
   }
 
   private async validateUser(userDto: createUserDto) {

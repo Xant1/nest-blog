@@ -11,9 +11,9 @@ import { SECRET_KEY } from '../config';
   imports: [
     forwardRef(() => UserModule),
     JwtModule.register({
-      secret: SECRET_KEY || 'SUPER_SECRET_KEY',
+      secret: SECRET_KEY || 'SECRET_KEY',
       signOptions: {
-        expiresIn: '24h',
+        expiresIn: 86400,
       },
     }),
   ],

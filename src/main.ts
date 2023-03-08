@@ -4,13 +4,14 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import { PORT } from './config';
 import { initialRoles } from './shared';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views/pages'));
   app.setViewEngine('ejs');
-
+  app.use(cookieParser());
   await app.listen(PORT, () => console.log(`Server started on port = ${PORT}`));
 
   // if you are launching the database for the first time, uncomment the code below to create roles in the roles database manually

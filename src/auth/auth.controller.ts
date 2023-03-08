@@ -1,4 +1,12 @@
-import { Body, Res, Controller, Post, Get, Redirect } from '@nestjs/common';
+import {
+  Body,
+  Res,
+  Controller,
+  Post,
+  Get,
+  Redirect,
+  Req,
+} from '@nestjs/common';
 import { createUserDto } from '../user/dto/create-user.dto';
 import { AuthService } from './auth.service';
 import { Response } from 'express';
@@ -25,7 +33,12 @@ export class AuthController {
 
   @Post('/login')
   // @Redirect('/')
-  login(@Body() userDto: createUserDto) {
+  async login(
+    @Body() userDto: createUserDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const jwt = await this.authService.login(userDto);
+    res.cookie('jwt', jwt.token, { httpOnly: true });
     return this.authService.login(userDto);
   }
 }
