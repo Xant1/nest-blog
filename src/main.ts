@@ -15,6 +15,6 @@ async function bootstrap() {
   await app.listen(PORT, () => console.log(`Server started on port = ${PORT}`));
 
   // if you are launching the database for the first time, uncomment the code below to create roles in the roles database manually
-  // initialRoles();
+   //initialRoles();
 }
 bootstrap();

@@ -1,0 +1,10 @@
+<h1 style="text-align: center;">users:</h1>
+<main style="text-align: center;">
+   <% users.forEach(user => { %>
+      <p><%= user.id %>
+         <%= user.email %>
+         <%= user.banned %>
+         <%= user.banReason %>
+      </p>
+   <% }) %>
+</main>
