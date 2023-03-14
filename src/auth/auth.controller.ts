@@ -1,12 +1,4 @@
-import {
-  Body,
-  Res,
-  Controller,
-  Post,
-  Get,
-  Redirect,
-  Req,
-} from '@nestjs/common';
+import { Body, Res, Controller, Post, Get, Redirect } from '@nestjs/common';
 import { createUserDto } from '../user/dto/create-user.dto';
 import { AuthService } from './auth.service';
 import { Response } from 'express';
@@ -26,13 +18,13 @@ export class AuthController {
   }
 
   @Post('/registration')
-  // @Redirect('/')
+  @Redirect('/')
   registration(@Body() userDto: createUserDto) {
     return this.authService.registration(userDto);
   }
 
   @Post('/login')
-  // @Redirect('/')
+  @Redirect('/')
   async login(
     @Body() userDto: createUserDto,
     @Res({ passthrough: true }) res: Response,

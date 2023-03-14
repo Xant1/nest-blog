@@ -18,7 +18,7 @@ export class UserController {
 
   @Roles('ADMIN')
   @UseGuards(RolesGuard)
-  @Get()
+  @Get('manage')
   getAllUser(@Res() res: Response) {
     return this.userService.getAllUsers().then((data) => {
       res.render('getUsers', { users: data });
@@ -27,7 +27,7 @@ export class UserController {
 
   @Roles('ADMIN')
   @UseGuards(RolesGuard)
-  @Post('/role')
+  @Post('manage')
   addRole(@Body() dto: AddRoleDto) {
     return this.userService.addRole(dto);
   }
