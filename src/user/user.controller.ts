@@ -27,6 +27,15 @@ export class UserController {
 
   @Roles('ADMIN')
   @UseGuards(RolesGuard)
+  @Get('/ban')
+  getBannedUsers(@Res() res: Response) {
+    return this.userService.getBannedUsers().then((data) => {
+      res.render('bannedUsers', { users: data });
+    });
+  }
+
+  @Roles('ADMIN')
+  @UseGuards(RolesGuard)
   @Post('manage')
   addRole(@Body() dto: AddRoleDto) {
     return this.userService.addRole(dto);

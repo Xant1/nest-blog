@@ -26,6 +26,11 @@ export class UserService {
     return users;
   }
 
+  async getBannedUsers() {
+    const users = await this.userRepository.findAll({ where: {banned: true}, include: { all: true } });
+    return users;
+  }
+
   async getUserByEmail(email: string) {
     const user = await this.userRepository.findOne({
       where: { email },
@@ -33,6 +38,8 @@ export class UserService {
     });
     return user;
   }
+
+  
 
   async addRole(dto: AddRoleDto) {
     const user = await this.userRepository.findByPk(dto.userId);

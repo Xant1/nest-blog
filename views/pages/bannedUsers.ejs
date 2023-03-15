@@ -4,17 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Users</title>
+    <title>Banned Users</title>
   </head>
   <body>
     <main style="text-align: center">
       <form method="POST">
-        <h1>Give a role to a user</h1>
+        <h1>Give a ban to a user</h1>
         <input type="number" placeholder="user id" name="userId" />
-        <input type="text" placeholder="giving role" name="value" />
+        <input type="text" placeholder="ban reason" name="banReason" />
         <button type="submit">submit</button>
       </form>
-      <h1 style="text-align: center">Users</h1>
+      <h1>Banned Users</h1>
       <% users.forEach(user => { %>
       <p>
         user id: <%= user.id %> | user email: <%= user.email %> | banned: <%=
