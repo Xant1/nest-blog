@@ -1,4 +1,4 @@
-import { IsEmail, IsString, Length } from 'class-validator';
+import { IsBoolean, IsEmail, IsString, Length } from 'class-validator';
 
 export class createUserDto {
   @IsEmail({}, { message: 'incorrect email' })

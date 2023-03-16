@@ -18,6 +18,7 @@ export class UserService {
     const role = await this.roleService.getRoleByValue('USER');
     await user.$set('roles', [role.id]);
     user.roles = [role];
+    
     return user;
   }
 

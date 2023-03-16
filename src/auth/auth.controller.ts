@@ -18,13 +18,13 @@ export class AuthController {
   }
 
   @Post('/registration')
-  @Redirect('/')
+  // @Redirect('/')
   registration(@Body() userDto: createUserDto) {
     return this.authService.registration(userDto);
   }
 
   @Post('/login')
-  @Redirect('/')
+  // @Redirect('/')
   async login(
     @Body() userDto: createUserDto,
     @Res({ passthrough: true }) res: Response,

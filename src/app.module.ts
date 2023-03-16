@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule } from '@nestjs/config';
 import { ArticleModule } from './post/article.module';
@@ -10,6 +10,7 @@ import { UserModule } from './user/user.module';
 import { RoleModule } from './role/role.module';
 import { AuthModule } from './auth/auth.module';
 import * as path from 'path';
+import { bannedUser } from './middleware/bannedUser';
 
 @Module({
   controllers: [],
@@ -39,4 +40,10 @@ import * as path from 'path';
   ],
 })
 
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(bannedUser).forRoutes('/create', 'users');
+  }
+}
+
+
